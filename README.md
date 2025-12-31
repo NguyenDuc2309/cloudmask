@@ -1,14 +1,14 @@
 # Cloudmask
 
-A React library that displays beautiful Cloudflare-style error pages when your app crashes.
+Cloudmask is a React library that provides a professional Cloudflare-style error page for your application when runtime crashes occur. It serves as a robust Error Boundary that catches component errors and displays a user-friendly interface instead of a blank screen or raw error logs.
 
-## Features
+Repository: https://github.com/NguyenDuc2309/cloudmask
 
-- 🎨 **Beautiful UI** - Exact replica of Cloudflare's error page design
-- 🛡️ **Error Boundary** - Catches React component crashes
-- 🌐 **Global Error Handling** - Catches unhandled JavaScript errors and promise rejections
-- 📦 **Lightweight** - Small bundle size with minimal dependencies
-- ⚡ **Easy to Use** - Simple API with sensible defaults
+## Project Goals
+
+- **Runtime Crash Handling**: Automatically catches React component errors via a standardized Error Boundary.
+- **Professional UI**: Replicates the clean and recognizable Cloudflare error page design, including status codes, Ray IDs, and timestamps.
+- **Automatic Error Detection**: Intelligently analyzes error objects to determine appropriate HTTP status codes (e.g., 400 for logic errors, 502 for runtime crashes).
 
 ## Installation
 
@@ -18,95 +18,65 @@ npm install cloudmask
 
 ## Usage
 
-### Basic Usage with Error Boundary
+Wrap your application (or specific parts of it) with `CloudmaskErrorBoundary`.
 
-Wrap your app with `CloudmaskErrorBoundary` to catch React component errors:
+### Import Style
+
+Ensure the library's CSS is imported in your entry file (e.g., `main.jsx` or `index.jsx`):
+
+```javascript
+import "cloudmask/style.css";
+```
+
+### Wrap Application
 
 ```jsx
+import React from "react";
 import { CloudmaskErrorBoundary } from "cloudmask";
-import "cloudmask/style.css";
+import App from "./App";
 
-function App() {
-  return (
-    <CloudmaskErrorBoundary errorCode={500} serviceName="My App">
-      <YourApp />
-    </CloudmaskErrorBoundary>
-  );
-}
+const Root = () => (
+  <CloudmaskErrorBoundary serviceName="My App">
+    <App />
+  </CloudmaskErrorBoundary>
+);
+
+export default Root;
 ```
 
-### Advanced Usage with Context
+When any component within the boundary crashes, Cloudmask will intercept the error and display the error page.
 
-For more control, use the `CloudmaskProvider` and `CloudmaskOverlay`:
+## Props
 
-```jsx
-import { CloudmaskProvider, CloudmaskOverlay } from "cloudmask";
-import "cloudmask/style.css";
+The `CloudmaskErrorBoundary` component accepts the following optional prop:
 
-function App() {
-  return (
-    <CloudmaskProvider serviceName="My App" enableGlobalErrorHandling={true}>
-      <CloudmaskOverlay />
-      <YourApp />
-    </CloudmaskProvider>
-  );
-}
-```
+| Prop          | Type     | Default        | Description                                        |
+| ------------- | -------- | -------------- | -------------------------------------------------- |
+| `serviceName` | `string` | `"Cloudflare"` | The name of the service displayed in the error UI. |
 
-### Manual Error Triggering
+## Automatic Error Detection Logic
 
-You can manually trigger the error page:
+Cloudmask analyzes the captured `Error` object to categorize the failure:
 
-```jsx
-import { useCloudmask } from "cloudmask";
+### 400 Bad Request
 
-function SomeComponent() {
-  const { triggerError } = useCloudmask();
+Assigned to errors likely caused by development logic issues:
 
-  const handleError = () => {
-    triggerError(new Error("Something went wrong"), 502);
-  };
+- `TypeError` (e.g., accessing a property of undefined)
+- `ReferenceError` (e.g., using an undeclared variable)
+- `SyntaxError`
 
-  return <button onClick={handleError}>Trigger Error</button>;
-}
-```
+### 502 Bad Gateway
 
-## API
+Assigned to generic runtime crashes:
 
-### `CloudmaskErrorBoundary`
+- `new Error('Message')`
+- General unhandled exceptions
 
-Props:
+### 500 Internal Server Error
 
-- `errorCode` (number, optional) - HTTP error code to display (500, 502, 503). Default: 500
-- `serviceName` (string, optional) - Name of your service. Default: "Cloudmask"
-- `hostName` (string, optional) - Hostname to display. Default: window.location.hostname
+Used as a fallback for all other error types.
 
-### `CloudmaskProvider`
+---
 
-Props:
-
-- `serviceName` (string, optional) - Name of your service
-- `enableGlobalErrorHandling` (boolean, optional) - Enable global error listeners. Default: true
-- `onError` (function, optional) - Callback when error is triggered
-
-### `useCloudmask`
-
-Hook that returns:
-
-- `error` - Current error object
-- `errorCode` - Current error code
-- `triggerError(error, code)` - Manually trigger error page
-- `clearError()` - Clear current error
-- `serviceName` - Service name from provider
-
-## Error Codes
-
-The library supports the following error codes:
-
-- **500** - Internal Server Error
-- **502** - Bad Gateway
-- **503** - Service Unavailable
-
-## License
-
-MIT
+Cloudmask - enhance your application's resilience with professional error handling.
