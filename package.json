@@ -1,0 +1,46 @@
+{
+  "name": "cloudmask",
+  "version": "1.0.0",
+  "description": "A Cloudflare error page clone for React apps",
+  "main": "dist/cloudmask.umd.js",
+  "module": "dist/cloudmask.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/cloudmask.mjs",
+      "require": "./dist/cloudmask.umd.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/cloudmask"
+  },
+  "homepage": "https://github.com/yourusername/cloudmask#readme",
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "vite": "^5.0.0"
+  },
+  "keywords": [
+    "cloudflare",
+    "error",
+    "error-page",
+    "error-boundary",
+    "react",
+    "crash-handler"
+  ],
+  "author": "",
+  "license": "MIT"
+}

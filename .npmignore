@@ -1,0 +1,14 @@
+# Source files
+src/
+
+# Config files
+vite.config.js
+.gitignore
+
+# Demo
+demo.html
+
+# Development
+node_modules/
+.DS_Store
+*.log

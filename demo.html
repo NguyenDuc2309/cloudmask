@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloudmask Demo</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link rel="stylesheet" href="./dist/style.css">
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { CloudmaskErrorBoundary, CloudmaskProvider, CloudmaskOverlay, useCloudmask } = window.Cloudmask;
+
+    // Component that throws an error
+    function BrokenComponent() {
+      const [shouldCrash, setShouldCrash] = React.useState(false);
+      
+      if (shouldCrash) {
+        throw new Error('This component crashed!');
+      }
+      
+      return (
+        <div style={{ padding: '40px', textAlign: 'center' }}>
+          <h1>Cloudmask Demo</h1>
+          <p>Click the button below to simulate an app crash:</p>
+          <button 
+            onClick={() => setShouldCrash(true)}
+            style={{
+              padding: '12px 24px',
+              fontSize: '16px',
+              backgroundColor: '#bd2426',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              marginTop: '20px'
+            }}
+          >
+            Crash the App
+          </button>
+          
+          <div style={{ marginTop: '40px', textAlign: 'left', maxWidth: '600px', margin: '40px auto' }}>
+            <h2>How it works:</h2>
+            <ul>
+              <li>The app is wrapped in <code>CloudmaskErrorBoundary</code></li>
+              <li>When a React component crashes, the error boundary catches it</li>
+              <li>Instead of showing a blank page or ugly error, it shows a beautiful Cloudflare-style error page</li>
+              <li>Users see a professional error page while you fix the issue</li>
+            </ul>
+          </div>
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <CloudmaskErrorBoundary errorCode={500} serviceName="Cloud flare">
+          <BrokenComponent />
+        </CloudmaskErrorBoundary>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+
+  <script src="./dist/cloudmask.umd.js"></script>
+</body>
+</html>

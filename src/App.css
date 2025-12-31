@@ -1,0 +1,632 @@
+.cf-container {
+    width: 100%;
+}
+
+.cf-bg-white {
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255,255,255,var(--bg-opacity))
+}
+
+.cf-bg-center {
+    background-position: 50%
+}
+
+.cf-bg-no-repeat {
+    background-repeat: no-repeat
+}
+
+.cf-border-gray-300 {
+    --border-opacity: 1;
+    border-color: #ebebeb;
+    border-color: rgba(235,235,235,var(--border-opacity))
+}
+
+.cf-rounded {
+    border-radius: .25rem
+}
+
+.cf-border-solid {
+    border-style: solid
+}
+
+.cf-border-0 {
+    border-width: 0
+}
+
+.cf-border {
+    border-width: 1px
+}
+
+.cf-border-t {
+    border-top-width: 1px
+}
+
+.cf-cursor-pointer {
+    cursor: pointer
+}
+
+.cf-block {
+    display: block
+}
+
+.cf-inline-block {
+    display: inline-block
+}
+
+.cf-table {
+    display: table
+}
+
+.cf-hidden {
+    display: none
+}
+
+.cf-float-left {
+    float: left
+}
+
+.cf-clearfix:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+.cf-font-mono {
+    font-family: monaco,courier,monospace
+}
+
+.cf-font-light {
+    font-weight: 300
+}
+
+.cf-font-normal {
+    font-weight: 400
+}
+
+.cf-font-semibold {
+    font-weight: 600
+}
+
+.cf-h-12 {
+    height: 3rem
+}
+
+.cf-h-20 {
+    height: 5rem
+}
+
+.cf-text-13 {
+    font-size: 13px
+}
+
+.cf-text-15 {
+    font-size: 15px
+}
+
+.cf-text-60 {
+    font-size: 60px
+}
+
+.cf-text-2xl {
+    font-size: 1.5rem
+}
+
+.cf-text-3xl {
+    font-size: 1.875rem
+}
+
+.cf-leading-tight {
+    line-height: 1.25
+}
+
+.cf-leading-normal {
+    line-height: 1.5
+}
+
+.cf-leading-relaxed {
+    line-height: 1.625
+}
+
+.cf-leading-1\.3 {
+    line-height: 1.3
+}
+
+.cf-my-8 {
+    margin-top: 2rem;
+    margin-bottom: 2rem
+}
+
+.cf-mx-auto {
+    margin-left: auto;
+    margin-right: auto
+}
+
+.cf-mr-2 {
+    margin-right: .5rem
+}
+
+.cf-mb-2 {
+    margin-bottom: .5rem
+}
+
+.cf-mt-3 {
+    margin-top: .75rem
+}
+
+.cf-mb-4 {
+    margin-bottom: 1rem
+}
+
+.cf-ml-4 {
+    margin-left: 1rem
+}
+
+.cf-mt-6 {
+    margin-top: 1.5rem
+}
+
+.cf-mb-6 {
+    margin-bottom: 1.5rem
+}
+
+.cf-mb-8 {
+    margin-bottom: 2rem
+}
+
+.cf-mb-10 {
+    margin-bottom: 2.5rem
+}
+
+.cf-ml-10 {
+    margin-left: 2.5rem
+}
+
+.cf-mb-15 {
+    margin-bottom: 3.75rem
+}
+
+.cf-ml-6-neg {
+    margin-left: -1.5rem
+}
+
+.cf-overflow-hidden {
+    overflow: hidden
+}
+
+.cf-p-0 {
+    padding: 0
+}
+
+.cf-py-2 {
+    padding-top: .5rem;
+    padding-bottom: .5rem
+}
+
+.cf-px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem
+}
+
+.cf-py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem
+}
+
+.cf-py-10 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem
+}
+
+.cf-py-15 {
+    padding-top: 3.75rem;
+    padding-bottom: 3.75rem
+}
+
+.cf-pr-6 {
+    padding-right: 1.5rem
+}
+
+.cf-pt-10 {
+    padding-top: 2.5rem
+}
+
+.cf-absolute {
+    position: absolute
+}
+
+.cf-relative {
+    position: relative
+}
+
+.cf-left-half {
+    left: 50%
+}
+
+.cf-bottom-4-neg {
+    bottom: -1rem
+}
+
+.cf-resize {
+    resize: both
+}
+
+.cf-text-center {
+    text-align: center
+}
+
+.cf-text-black-dark {
+    --text-opacity: 1;
+    color: #404040;
+    color: rgba(64,64,64,var(--text-opacity))
+}
+
+.cf-text-gray-600 {
+    --text-opacity: 1;
+    color: #999;
+    color: rgba(153,153,153,var(--text-opacity))
+}
+
+.cf-text-red-error {
+    --text-opacity: 1;
+    color: #bd2426;
+    color: rgba(189,36,38,var(--text-opacity))
+}
+
+.cf-text-green-success {
+    --text-opacity: 1;
+    color: #9bca3e;
+    color: rgba(155,202,62,var(--text-opacity))
+}
+
+.cf-antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.cf-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.cf-w-12 {
+    width: 3rem
+}
+
+.cf-w-240 {
+    width: 60rem
+}
+
+.cf-w-half {
+    width: 50%
+}
+
+.cf-w-third {
+    width: 33.333333%
+}
+
+.cf-w-full {
+    width: 100%
+}
+
+.cf-transition {
+    -webkit-transition-property: background-color,border-color,color,fill,stroke,opacity,box-shadow,-webkit-transform;
+    transition-property: background-color,border-color,color,fill,stroke,opacity,box-shadow,-webkit-transform;
+    transition-property: background-color,border-color,color,fill,stroke,opacity,box-shadow,transform;
+    transition-property: background-color,border-color,color,fill,stroke,opacity,box-shadow,transform,-webkit-transform
+}
+
+.cloudmask-body, .cloudmask-html {
+    --text-opacity: 1;
+    color: #404040;
+    color: rgba(64,64,64,var(--text-opacity));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+    font-size: 16px;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.cloudmask-body, .cloudmask-html {
+    margin: 0;
+    padding: 0
+}
+
+.cloudmask-wrapper * {
+    box-sizing: border-box;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.cloudmask-wrapper a {
+    --text-opacity: 1;
+    color: #2f7bbf;
+    color: rgba(47,123,191,var(--text-opacity));
+    text-decoration: none;
+    -webkit-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: .15s;
+    transition-duration: .15s;
+    -webkit-transition-timing-function: cubic-bezier(0,0,.2,1);
+    transition-timing-function: cubic-bezier(0,0,.2,1)
+}
+
+.cloudmask-wrapper a:hover {
+    --text-opacity: 1;
+    color: #f68b1f;
+    color: rgba(246,139,31,var(--text-opacity))
+}
+
+.cloudmask-wrapper img {
+    display: block;
+    width: 100%;
+    height: auto
+}
+
+#what-happened-section p {
+    font-size: 15px;
+    line-height: 1.5
+}
+
+.cloudmask-wrapper strong {
+    font-weight: 600
+}
+
+.cf-bg-gradient-gray {
+    background-image: -webkit-linear-gradient(top,#dedede,#ebebeb 3%,#ebebeb 97%,#dedede)
+}
+
+.cf-error-source:after {
+    position: absolute;
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255,255,255,var(--bg-opacity));
+    width: 2.5rem;
+    height: 2.5rem;
+    --transform-translate-x: 0;
+    --transform-translate-y: 0;
+    --transform-rotate: 0;
+    --transform-skew-x: 0;
+    --transform-skew-y: 0;
+    --transform-scale-x: 1;
+    --transform-scale-y: 1;
+    -webkit-transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y));
+    -ms-transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y));
+    transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y));
+    --transform-rotate: 45deg;
+    content: "";
+    bottom: -1.75rem;
+    left: 50%;
+    margin-left: -1.25rem;
+    box-shadow: 0 0 4px 4px #dedede
+}
+
+@media screen and (max-width: 720px) {
+    .cf-error-source:after {
+        display:none
+    }
+}
+
+/* Icons now rendered via img tags in Cloudmask.jsx */
+
+.cloudmask-wrapper .feedback-hidden {
+    display: none
+}
+
+.cloudmask-wrapper .feedback-success {
+    min-height: 33px;
+    line-height: 33px
+}
+
+.cloudmask-wrapper .cf-button {
+    color: #0051c3;
+    font-size: 13px;
+    border-color: #0045a6;
+    -webkit-transition-timing-function: ease;
+    transition-timing-function: ease;
+    -webkit-transition-duration: .2s;
+    transition-duration: .2s;
+    -webkit-transition-property: background-color,border-color,color;
+    transition-property: background-color,border-color,color
+}
+
+.cloudmask-wrapper .cf-button:hover {
+    color: #fff;
+    background-color: #003681
+}
+
+.cf-error-footer .hidden {
+    display: none
+}
+
+.cf-error-footer .cf-footer-ip-reveal-btn {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    color: #0051c3;
+    -webkit-transition: color .15s ease;
+    transition: color .15s ease
+}
+
+.cf-error-footer .cf-footer-ip-reveal-btn:hover {
+    color: #ee730a
+}
+
+.code-label {
+    background-color: #d9d9d9;
+    color: #313131;
+    font-weight: 500;
+    border-radius: 1.25rem;
+    font-size: .75rem;
+    line-height: 4.5rem;
+    padding: .25rem .5rem;
+    height: 4.5rem;
+    white-space: nowrap;
+    vertical-align: middle
+}
+
+@media (max-width: 639px) {
+    .cf-sm\:block {
+        display:block
+    }
+
+    .cf-sm\:hidden {
+        display: none
+    }
+
+    .cf-sm\:mb-1 {
+        margin-bottom: .25rem
+    }
+
+    .cf-sm\:mb-2 {
+        margin-bottom: .5rem
+    }
+
+    .cf-sm\:py-4 {
+        padding-top: 1rem;
+        padding-bottom: 1rem
+    }
+
+    .cf-sm\:px-8 {
+        padding-left: 2rem;
+        padding-right: 2rem
+    }
+
+    .cf-sm\:text-left {
+        text-align: left
+    }
+}
+
+@media (max-width: 720px) {
+    .cf-md\:border-gray-400 {
+        --border-opacity:1;
+        border-color: #dedede;
+        border-color: rgba(222,222,222,var(--border-opacity))
+    }
+
+    .cf-md\:border-solid {
+        border-style: solid
+    }
+
+    .cf-md\:border-0 {
+        border-width: 0
+    }
+
+    .cf-md\:border-b {
+        border-bottom-width: 1px
+    }
+
+    .cf-md\:block {
+        display: block
+    }
+
+    .cf-md\:inline-block {
+        display: inline-block
+    }
+
+    .cf-md\:hidden {
+        display: none
+    }
+
+    .cf-md\:float-none {
+        float: none
+    }
+
+    .cf-md\:text-3xl {
+        font-size: 1.875rem
+    }
+
+    .cf-md\:m-0 {
+        margin: 0
+    }
+
+    .cf-md\:mt-0 {
+        margin-top: 0
+    }
+
+    .cf-md\:mb-2 {
+        margin-bottom: .5rem
+    }
+
+    .cf-md\:p-0 {
+        padding: 0
+    }
+
+    .cf-md\:py-8 {
+        padding-top: 2rem;
+        padding-bottom: 2rem
+    }
+
+    .cf-md\:px-8 {
+        padding-left: 2rem;
+        padding-right: 2rem
+    }
+
+    .cf-md\:pr-0 {
+        padding-right: 0
+    }
+
+    .cf-md\:pb-10 {
+        padding-bottom: 2.5rem
+    }
+
+    .cf-md\:top-0 {
+        top: 0
+    }
+
+    .cf-md\:right-0 {
+        right: 0
+    }
+
+    .cf-md\:left-auto {
+        left: auto
+    }
+
+    .cf-md\:text-left {
+        text-align: left
+    }
+
+    .cf-md\:w-full {
+        width: 100%
+    }
+}
+
+@media (max-width: 1023px) {
+    .cf-lg\:text-sm {
+        font-size:.875rem
+    }
+
+    .cf-lg\:text-2xl {
+        font-size: 1.5rem
+    }
+
+    .cf-lg\:text-4xl {
+        font-size: 2.25rem
+    }
+
+    .cf-lg\:leading-relaxed {
+        line-height: 1.625
+    }
+
+    .cf-lg\:px-8 {
+        padding-left: 2rem;
+        padding-right: 2rem
+    }
+
+    .cf-lg\:pt-6 {
+        padding-top: 1.5rem
+    }
+
+    .cf-lg\:w-full {
+        width: 100%
+    }
+}
