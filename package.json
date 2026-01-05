@@ -1,6 +1,7 @@
 {
   "name": "cloudmask",
   "version": "1.0.0",
+  "type": "module",
   "description": "A Cloudflare error page clone for React apps",
   "main": "dist/cloudmask.umd.js",
   "module": "dist/cloudmask.mjs",
