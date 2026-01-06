@@ -29,9 +29,9 @@ const detectErrorCode = (error) => {
 
 export const CloudmaskProvider = ({ 
   children, 
-  serviceName = 'Cloudmask',
   enableGlobalErrorHandling = true,
-  onError 
+  onError,
+  isDev = false
 }) => {
   const [error, setError] = useState(null);
   const [errorCode, setErrorCode] = useState(null);
@@ -81,7 +81,7 @@ export const CloudmaskProvider = ({
       errorCode,
       triggerError, 
       clearError,
-      serviceName 
+      isDev
     }}>
       {children}
     </CloudmaskContext.Provider>

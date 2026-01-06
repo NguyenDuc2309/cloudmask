@@ -22,6 +22,7 @@ export class CloudmaskErrorBoundary extends Component {
         <CloudmaskDisplay 
           error={this.state.error}
           serviceName={this.props.serviceName}
+          isDev={this.props.isDev}
         />
       );
     }

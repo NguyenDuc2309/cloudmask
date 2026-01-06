@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ERROR_TYPES, detectErrorCode, generateRayId, formatUTCTime } from '../utils/errorUtils';
 import { StatusIndicator } from './StatusIndicator';
 import iconBrowser from '../images /cf-icon-browser.png';
@@ -9,14 +9,33 @@ import iconError from '../images /cf-icon-error.png';
 
 export const CloudmaskDisplay = ({ 
   error,
-  serviceName = 'Cloudflare'
+  serviceName = 'Cloudflare',
+  isDev = false,
+  onDismiss
 }) => {
   const finalErrorCode = detectErrorCode(error);
   const [ipRevealed, setIpRevealed] = React.useState(false);
+  const [showDevDetails, setShowDevDetails] = React.useState(true);
   const errorInfo = ERROR_TYPES[finalErrorCode] || ERROR_TYPES[500];
   const currentRayId = generateRayId();
   const timestamp = formatUTCTime();
   const hostName = window.location.hostname;
+
+  // Dev mode: Phím Escape để dismiss màn hình lỗi
+  useEffect(() => {
+    if (!isDev) return;
+    
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        if (onDismiss) {
+          onDismiss();
+        }
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isDev, onDismiss]);
 
   return (
     <div className="cloudmask-wrapper" style={{ background: '#fff', minHeight: '100vh' }}>
@@ -63,6 +82,46 @@ export const CloudmaskDisplay = ({
             </div>
           </div>
         </div>
+
+        {isDev && error && (
+          <div className="cf-w-240 cf-lg:w-full cf-mx-auto cf-mb-8 cf-lg:px-8">
+            <div style={{ backgroundColor: '#2d2d2d', borderRadius: '8px', overflow: 'hidden', border: '1px solid #444' }}>
+              <div 
+                onClick={() => setShowDevDetails(!showDevDetails)}
+                style={{ display: 'flex', alignItems: 'center', padding: '14px 18px', backgroundColor: '#3a3a3a', cursor: 'pointer' }}
+              >
+                <span style={{ color: '#ff6b6b', fontWeight: '600', fontSize: '14px', flex: 1 }}>
+                  {error.name || 'Error'}: {!showDevDetails ? error.message?.substring(0, 80) + (error.message?.length > 80 ? '...' : '') : ''}
+                </span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#aaa" strokeWidth="2" style={{ transform: showDevDetails ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.15s' }}>
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              {showDevDetails && (
+                <div style={{ padding: '16px 18px' }}>
+                  <p style={{ color: '#fff', fontSize: '15px', fontWeight: '500', margin: '0 0 16px 0', lineHeight: '1.5' }}>{error.message}</p>
+                  {error.stack && (
+                    <pre style={{ margin: 0, fontFamily: 'Consolas, Monaco, monospace', fontSize: '12px', lineHeight: '1.7', overflowX: 'auto', color: '#bbb' }}>
+                      {error.stack.split('\n').map((line, i) => (
+                        <div key={i} style={{ padding: '4px 0', color: i === 0 ? '#ff6b6b' : (line.includes('node_modules') ? '#777' : '#ddd') }}>
+                          {line}
+                        </div>
+                      ))}
+                    </pre>
+                  )}
+                  {onDismiss && (
+                    <div style={{ marginTop: '16px', textAlign: 'right' }}>
+                      <button onClick={onDismiss} style={{ backgroundColor: '#555', color: '#fff', border: 'none', borderRadius: '4px', padding: '8px 16px', fontSize: '13px', cursor: 'pointer' }}>
+                        Dismiss
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
 
         <div className="cf-w-240 cf-lg:w-full cf-mx-auto cf-mb-8 cf-lg:px-8">
           <div className="cf-clearfix">
