@@ -2,10 +2,23 @@
 
 Cloudmask is a React library that provides a professional Cloudflare-style error page for your application when runtime crashes occur. It serves as a robust Error Boundary that catches component errors and displays a user-friendly interface instead of a blank screen or raw error logs.
 
-![Cloudmask Demo](public/demo.png)
-![Cloudmask Demo](public/demo2.png)
+## Demo
 
-Repository: https://github.com/NguyenDuc2309/cloudmask
+### Production Mode (`isDev={false}`)
+
+Clean error page for end users - hides technical details while maintaining a professional appearance.
+
+![Production Mode](dist/demo.png)
+
+### Development Mode (`isDev={true}`)
+
+Detailed error information with expandable stack trace - includes a collapsible panel with smooth slide animation for debugging.
+
+![Development Mode](dist/demo2.png)
+
+---
+
+📦 **Repository**: [github.com/NguyenDuc2309/cloudmask](https://github.com/NguyenDuc2309/cloudmask)
 
 ## Project Goals
 
