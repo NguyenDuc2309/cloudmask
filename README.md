@@ -3,6 +3,7 @@
 Cloudmask is a React library that provides a professional Cloudflare-style error page for your application when runtime crashes occur. It serves as a robust Error Boundary that catches component errors and displays a user-friendly interface instead of a blank screen or raw error logs.
 
 ![Cloudmask Demo](public/demo.png)
+![Cloudmask Demo](public/demo2.png)
 
 Repository: https://github.com/NguyenDuc2309/cloudmask
 
@@ -52,9 +53,10 @@ When any component within the boundary crashes, Cloudmask will intercept the err
 
 The `CloudmaskErrorBoundary` component accepts the following optional prop:
 
-| Prop          | Type     | Default        | Description                                        |
-| ------------- | -------- | -------------- | -------------------------------------------------- |
-| `serviceName` | `string` | `"Cloudflare"` | The name of the service displayed in the error UI. |
+| Prop          | Type      | Default        | Description                                        |
+| ------------- | --------- | -------------- | -------------------------------------------------- |
+| `serviceName` | `string`  | `"Cloudflare"` | The name of the service displayed in the error UI. |
+| `isDev`       | `Boolean` | `"false"`      | Turn on to show developer error.                   |
 
 ## Automatic Error Detection Logic
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ERROR_TYPES, detectErrorCode, generateRayId, formatUTCTime } from '../utils/errorUtils';
 import { StatusIndicator } from './StatusIndicator';
 import iconBrowser from '../images /cf-icon-browser.png';
@@ -14,14 +14,21 @@ export const CloudmaskDisplay = ({
   onDismiss
 }) => {
   const finalErrorCode = detectErrorCode(error);
-  const [ipRevealed, setIpRevealed] = React.useState(false);
-  const [showDevDetails, setShowDevDetails] = React.useState(true);
+  const [ipRevealed, setIpRevealed] = useState(false);
+  const [showDevDetails, setShowDevDetails] = useState(true);
+  const devDetailsRef = useRef(null);
+  const [contentHeight, setContentHeight] = useState(0);
+
+  useEffect(() => {
+    if (devDetailsRef.current) {
+      setContentHeight(devDetailsRef.current.scrollHeight);
+    }
+  }, [showDevDetails, error]);
   const errorInfo = ERROR_TYPES[finalErrorCode] || ERROR_TYPES[500];
   const currentRayId = generateRayId();
   const timestamp = formatUTCTime();
   const hostName = window.location.hostname;
 
-  // Dev mode: Phím Escape để dismiss màn hình lỗi
   useEffect(() => {
     if (!isDev) return;
     
@@ -97,7 +104,15 @@ export const CloudmaskDisplay = ({
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </div>
-              {showDevDetails && (
+              <div 
+                ref={devDetailsRef}
+                style={{ 
+                  maxHeight: showDevDetails ? (contentHeight || 1000) + 'px' : '0px',
+                  overflow: 'hidden',
+                  transition: 'max-height 0.3s ease-in-out, opacity 0.25s ease-in-out',
+                  opacity: showDevDetails ? 1 : 0
+                }}
+              >
                 <div style={{ padding: '16px 18px' }}>
                   <p style={{ color: '#fff', fontSize: '15px', fontWeight: '500', margin: '0 0 16px 0', lineHeight: '1.5' }}>{error.message}</p>
                   {error.stack && (
@@ -117,11 +132,10 @@ export const CloudmaskDisplay = ({
                     </div>
                   )}
                 </div>
-              )}
+              </div>
             </div>
           </div>
         )}
-
 
         <div className="cf-w-240 cf-lg:w-full cf-mx-auto cf-mb-8 cf-lg:px-8">
           <div className="cf-clearfix">

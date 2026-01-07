@@ -16,6 +16,10 @@ export class CloudmaskErrorBoundary extends Component {
     console.error('Cloudmask caught error:', error, errorInfo);
   }
 
+  handleDismiss = () => {
+    this.setState({ hasError: false, error: null, errorInfo: null });
+  }
+
   render() {
     if (this.state.hasError) {
       return (
@@ -23,6 +27,7 @@ export class CloudmaskErrorBoundary extends Component {
           error={this.state.error}
           serviceName={this.props.serviceName}
           isDev={this.props.isDev}
+          onDismiss={this.handleDismiss}
         />
       );
     }
